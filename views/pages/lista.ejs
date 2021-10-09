@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./../partials/head'); %>
+  </head>
+  <body
+    class="
+      h-screen
+      w-full
+      p-4
+      flex
+      items-center
+      justify-center
+      bg-gray-800
+      text-white
+    "
+  >
+    <div class="max-width-md w-full">
+      <%- include('./../partials/header'); %> <% if(productos.length) { %>
+      <table class="table-auto">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Imagen</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% productos.forEach( function(p) { %>
+          <tr>
+            <td class="px-4 py-2"><%= p.title %></td>
+            <td class="px-4 py-2 text-right">$<%= p.price %></td>
+            <td>
+              <div
+                class="
+                  bg-contain bg-no-repeat bg-center
+                  h-40
+                  w-60
+                  m-4
+                  rounded
+                  shadow
+                "
+                style="background-image: url(<%= p.thumbnail %>)"
+              ></div>
+            </td>
+          </tr>
+          <% }); %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <div class="bg-yellow-400 text-yellow-900 text-center py-6 px-2 rounded">
+        No se encontraron productos
+      </div>
+      <% } %>
+    </div>
+  </body>
+</html>
